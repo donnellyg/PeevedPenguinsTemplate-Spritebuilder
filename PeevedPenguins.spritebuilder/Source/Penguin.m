@@ -13,7 +13,7 @@
 - (void) didLoadFromCCB {
     CCLOG(@"Penguin Loaded");
     self.physicsBody.collisionType = @"penguin";
-    exit(0);
+    //exit(0);
 }
 
 @end
