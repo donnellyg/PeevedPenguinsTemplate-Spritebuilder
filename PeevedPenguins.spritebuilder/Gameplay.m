@@ -7,6 +7,7 @@
 //
 
 #import "Gameplay.h"
+#import "CCPhysics+ObjectiveChipmunk.h"
 
 @implementation Gameplay {
     CCPhysicsNode *_physicsNode;
@@ -91,15 +92,20 @@
 }
 
 - (void) ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair seal:(CCNode *)nodeA wildcard:(CCNode *)nodeB {
-    CCLOG(@"Something collided with a seal!");
-    NSLog(@"Something collided with a seal! (NSLOG)");
+    //CCLOG(@"Something collided with a seal!");
+    float energy = [pair totalKineticEnergy];
+    
+    if (energy > 5000.f) {
+        //The following nonsense code ensures that the seal is only removed once, even if multiple things collide with it in the same frame.
+        [[_physicsNode space] addPostStepBlock:^{
+            [self removeSeal:nodeA];
+        } key:nodeA];
+    }
 }
 
-- (void) ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair typeA:(CCNode *)nodeA typeB:(CCNode *)nodeB {
-    CCLOG(@"Collision Occurred");
-    NSLog(@"Collision Occured (NSLOG)");
+- (void) removeSeal:(CCNode *)seal {
+    [seal removeFromParent];
 }
-
 
 
 - (void) retry {

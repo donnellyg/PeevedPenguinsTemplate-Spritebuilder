@@ -11,7 +11,7 @@
 @implementation Penguin
 
 - (void) didLoadFromCCB {
-    CCLOG(@"Penguin Loaded");
+    //CCLOG(@"Penguin Loaded");
     self.physicsBody.collisionType = @"penguin";
     //exit(0);
 }

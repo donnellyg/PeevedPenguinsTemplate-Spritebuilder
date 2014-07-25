@@ -17,10 +17,7 @@
 - (void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event; //user dragged finger off screen
 - (void) releaseCatapult;
 - (void) ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair seal:(CCNode *)nodeA wildcard:(CCNode *)nodeB;
-- (void) ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair typeA:(CCNode *)nodeA typeB:(CCNode *)nodeB;
-
-
-
+- (void) removeSeal:(CCNode *)seal;
 
 - (void) launchPenguin;
 
