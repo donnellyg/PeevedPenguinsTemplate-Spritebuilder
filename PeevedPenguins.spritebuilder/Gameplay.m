@@ -36,7 +36,7 @@
     
     // Set collision delegate to self (Gameplay now implements CCPhysicsCollisionDelegate)
     _physicsNode.collisionDelegate = self;
-    EXIT_FAILURE;
+    [[NSThread mainThread] exit];
 }
 
 - (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
