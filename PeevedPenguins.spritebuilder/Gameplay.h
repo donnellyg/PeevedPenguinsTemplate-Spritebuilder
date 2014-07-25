@@ -8,7 +8,7 @@
 
 #import "CCSprite.h"
 
-@interface Gameplay : CCNode<CCPhysicsCollisionDelegate>
+@interface Gameplay : CCNode <CCPhysicsCollisionDelegate>
 
 - (void) didLoadFromCCB;
 - (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event;
