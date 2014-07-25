@@ -28,6 +28,9 @@
     // ensure that nothing collides with the invisible spring nodes
     _pullbackNode.physicsBody.collisionMask = @[];
     _mouseJointNode.physicsBody.collisionMask = @[];
+    
+    // Show invisible physics objects:
+    _physicsNode.debugDraw = TRUE;
 }
 
 - (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
