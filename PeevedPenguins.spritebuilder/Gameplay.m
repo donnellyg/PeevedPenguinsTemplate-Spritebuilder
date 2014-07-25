@@ -45,11 +45,7 @@
 
 - (void) retry {
     
-    //CCNode *currentLevel = [_levelNode getChildByName:(@"Levels/Level1") recursively:NO];
-    [_levelNode removeAllChildrenWithCleanup:YES];
-    CCScene *reloadedLevel = [CCBReader loadAsScene:@"Levels/Level1"];
-    [_levelNode addChild:reloadedLevel];
-    
+    [[CCDirector sharedDirector] replaceScene: [CCBReader loadAsScene:@"Gameplay"]];
 }
 
 
