@@ -104,6 +104,11 @@
 }
 
 - (void) removeSeal:(CCNode *)seal {
+    CCParticleSystem *explosion = (CCParticleSystem *) [CCBReader load:@"SealExplosion"];
+    explosion.autoRemoveOnFinish = TRUE; //automatically deletes particles once the animation is complete
+    explosion.position = seal.position;
+    [seal.parent addChild:explosion];
+    
     [seal removeFromParent];
 }
 
