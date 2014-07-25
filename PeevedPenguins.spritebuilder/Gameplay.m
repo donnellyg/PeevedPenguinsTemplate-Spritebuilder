@@ -94,7 +94,7 @@
     NSLog(@"Something collided with a seal! (NSLOG)");
 }
 
-- (void) ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair wildcard:(CCNode *)nodeA wildcard:(CCNode *)nodeB {
+- (void) ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair typeA:(CCNode *)nodeA typeB:(CCNode *)nodeB {
     CCLOG(@"Collision Occurred");
     NSLog(@"Collision Occured (NSLOG)");
 }
