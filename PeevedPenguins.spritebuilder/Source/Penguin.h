@@ -10,6 +10,6 @@
 
 @interface Penguin : CCSprite
 
-//- (void) didLoadFromCCB;
+- (void) didLoadFromCCB;
 
 @end

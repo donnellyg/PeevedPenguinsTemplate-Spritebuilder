@@ -13,6 +13,7 @@
 - (void) didLoadFromCCB {
     CCLOG(@"Seal Loaded");
     self.physicsBody.collisionType = @"seal";
+    EXIT_FAILURE;
 }
 
 @end
