@@ -33,6 +33,9 @@
     
     // Show invisible physics objects:
     _physicsNode.debugDraw = TRUE;
+    
+    // Set collision delegate to self (Gameplay now implements CCPhysicsCollisionDelegate)
+    _physicsNode.collisionDelegate = self;
 }
 
 - (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
@@ -86,11 +89,21 @@
     }
 }
 
+- (void) ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair seal:(CCNode *)nodeA wildcard:(CCNode *)nodeB {
+    CCLOG(@"Something collided with a seal!");
+}
+
+
+
+- (void) retry {
+    [[CCDirector sharedDirector] replaceScene: [CCBReader loadAsScene:@"Gameplay"]];
+}
+
+
+
+//////UNUSED METHODS/////////////////////////////////////////////////////////////////////////////
 - (void) launchPenguin {
-    //CCNode *penguin = [CCBReader load:@"Penguin"];
     _currentPenguin.position = ccpAdd(_catapultArm.position, ccp(16,130)); //manually position the penguin in the bowl of the catapult
-    
-    //[_physicsNode addChild:_currentPenguin];
     
     // launching the penguin
     CGPoint launchDirection = ccp(1,0);
@@ -102,11 +115,6 @@
     CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentPenguin worldBoundary:self.boundingBox];
     [_contentNode runAction:follow];
 }
-
-- (void) retry {
-    
-    [[CCDirector sharedDirector] replaceScene: [CCBReader loadAsScene:@"Gameplay"]];
-}
-
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 @end
