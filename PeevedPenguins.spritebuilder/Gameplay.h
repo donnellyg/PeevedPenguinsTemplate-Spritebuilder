@@ -17,6 +17,7 @@
 - (void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event; //user dragged finger off screen
 - (void) releaseCatapult;
 - (void) ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair seal:(CCNode *)nodeA wildcard:(CCNode *)nodeB;
+- (void) ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair wildcard:(CCNode *)nodeA wildcard:(CCNode *)nodeB;
 
 
 
