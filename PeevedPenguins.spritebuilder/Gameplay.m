@@ -12,12 +12,14 @@
     CCPhysicsNode *_physicsNode;
     CCNode *_catapultArm;
     CCNode *_levelNode;
+    //NSString *levelNumber;
 }
 
 - (void) didLoadFromCCB{
     self.userInteractionEnabled = TRUE; //scene now accepts touches
     
     CCScene *level = [CCBReader loadAsScene:@"Levels/Level1"];
+    //levelNumber = @"Level1";
     [_levelNode addChild:level];
 }
 
@@ -39,6 +41,15 @@
     self.position = ccp(0, 0);
     CCActionFollow *follow = [CCActionFollow actionWithTarget:penguin worldBoundary:self.boundingBox];
     [self runAction:follow];
+}
+
+- (void) retry {
+    
+    CCNode *currentLevel = [_levelNode getChildByName:(@"Levels/Level1") recursively:NO];
+    [_levelNode removeChild: currentLevel];
+    CCScene *reloadedLevel = [CCBReader loadAsScene:@"Levels/Level1"];
+    [_levelNode addChild:reloadedLevel];
+    
 }
 
 
