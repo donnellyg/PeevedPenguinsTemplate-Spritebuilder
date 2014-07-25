@@ -79,27 +79,27 @@
         _currentPenguin.physicsBody.allowsRotation = TRUE;
         
         // Follow the now flying penguin
-        
-        CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentPenguin worldBoundary:self.boundingBox];
-        [_contentNode runAction:follow];
+        [self launchPenguin];
+        //CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentPenguin worldBoundary:self.boundingBox];
+        //[_contentNode runAction:follow];
         
     }
 }
 
 - (void) launchPenguin {
-    CCNode *penguin = [CCBReader load:@"Penguin"];
-    penguin.position = ccpAdd(_catapultArm.position, ccp(16,130)); //manually position the penguin in the bowl of the catapult
+    //CCNode *penguin = [CCBReader load:@"Penguin"];
+    _currentPenguin.position = ccpAdd(_catapultArm.position, ccp(16,130)); //manually position the penguin in the bowl of the catapult
     
-    [_physicsNode addChild:penguin];
+    [_physicsNode addChild:_currentPenguin];
     
     // launching the penguin
     CGPoint launchDirection = ccp(1,0);
     CGPoint force = ccpMult(launchDirection, 8000);
-    [penguin.physicsBody applyForce:force];
+    [_currentPenguin.physicsBody applyForce:force];
     
     //Make the screen follow the penguin most recently launched.
     self.position = ccp(0, 0);
-    CCActionFollow *follow = [CCActionFollow actionWithTarget:penguin worldBoundary:self.boundingBox];
+    CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentPenguin worldBoundary:self.boundingBox];
     [_contentNode runAction:follow];
 }
 
