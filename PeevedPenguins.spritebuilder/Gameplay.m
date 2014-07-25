@@ -19,6 +19,13 @@
     CCPhysicsJoint *_mouseJoint;
     CCNode *_currentPenguin;
     CCPhysicsJoint *_penguinCatapultJoint;
+    
+    //Waiting Penguins
+    CCNode * _wp1;
+    CCNode * _wp2;
+    CCNode * _wp3;
+    
+    
     //NSString *levelNumber;
 }
 
