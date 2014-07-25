@@ -16,6 +16,8 @@
     CCNode *_pullbackNode;
     CCNode *_mouseJointNode;
     CCPhysicsJoint *_mouseJoint;
+    CCNode *_currentPenguin;
+    CCPhysicsJoint *_penguinCatapultJoint;
     //NSString *levelNumber;
 }
 
@@ -40,6 +42,16 @@
     if (CGRectContainsPoint([_catapultArm boundingBox], touchLocation)) {
         _mouseJointNode.position = touchLocation;
         _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_catapultArm.physicsBody anchorA:ccp(0,0) anchorB:ccp(20,125) restLength:0.f stiffness:3000.f damping:150.f];
+        
+        //Create a penguin and place it in the catapult
+        _currentPenguin = [CCBReader load:@"Penguin"];
+        CGPoint penguinPosition = [_catapultArm convertToWorldSpace:ccp(20,125)];
+        _currentPenguin.position = [_physicsNode convertToNodeSpace:penguinPosition];
+        [_physicsNode addChild:_currentPenguin];
+        _currentPenguin.physicsBody.allowsRotation = FALSE;
+        
+        _penguinCatapultJoint = [CCPhysicsJoint connectedPivotJointWithBodyA:_currentPenguin.physicsBody bodyB:_catapultArm.physicsBody anchorA:_currentPenguin.anchorPointInPoints];
+        
     }
 }
 
@@ -62,6 +74,15 @@
     if (_mouseJoint != nil) {
         [_mouseJoint invalidate];
         _mouseJoint = nil;
+        
+        
+        _currentPenguin.physicsBody.allowsRotation = TRUE;
+        
+        // Follow the now flying penguin
+        
+        CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentPenguin worldBoundary:self.boundingBox];
+        [_contentNode runAction:follow];
+        
     }
 }
 
