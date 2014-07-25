@@ -75,7 +75,7 @@
         [_mouseJoint invalidate];
         _mouseJoint = nil;
         
-        
+        [_penguinCatapultJoint invalidate];
         _currentPenguin.physicsBody.allowsRotation = TRUE;
         
         // Follow the now flying penguin
