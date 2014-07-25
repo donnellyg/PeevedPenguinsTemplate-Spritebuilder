@@ -54,13 +54,6 @@
     
     [self setupCocos2dWithOptions:cocos2dSetup];
     
-    ///TEMPORARY ADDITION////
-    
-    [CCBReader load:@"Penguin"];
-    [CCBReader load:@"Seal"];
-    
-    /////////////////////////
-    
     return YES;
 }
 

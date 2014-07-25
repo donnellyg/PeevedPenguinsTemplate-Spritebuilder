@@ -10,6 +10,5 @@
 
 @interface Seal : CCSprite
 
-- (id) init;
 
 @end
