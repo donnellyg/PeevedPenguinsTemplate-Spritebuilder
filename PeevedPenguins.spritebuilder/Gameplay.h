@@ -11,7 +11,11 @@
 @interface Gameplay : CCSprite
 
 - (void) didLoadFromCCB;
-- (void) touchBegan:(UITouch* )touch withEvent:(UIEvent *)event;
+- (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event;
+- (void) touchMoved:(UITouch *)touch withEvent:(UIEvent *)event;
+- (void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event;
+- (void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event; //user dragged finger off screen
+- (void) releaseCatapult;
 - (void) launchPenguin;
 
 @end
