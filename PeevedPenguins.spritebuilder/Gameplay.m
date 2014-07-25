@@ -79,9 +79,9 @@
         _currentPenguin.physicsBody.allowsRotation = TRUE;
         
         // Follow the now flying penguin
-        [self launchPenguin];
-        //CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentPenguin worldBoundary:self.boundingBox];
-        //[_contentNode runAction:follow];
+        //[self launchPenguin];
+        CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentPenguin worldBoundary:self.boundingBox];
+        [_contentNode runAction:follow];
         
     }
 }
