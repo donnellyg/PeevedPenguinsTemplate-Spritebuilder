@@ -11,7 +11,7 @@
 @implementation Seal
 
 - (void) didLoadFromCCB {
-    CCLOG(@"Seal loaded");
+    CCLOG(@"Seal Loaded");
     self.physicsBody.collisionType = @"seal";
 }
 
