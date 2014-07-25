@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>19</integer>
+	<integer>22</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -213,8 +213,8 @@
 					<string>Point</string>
 					<key>value</key>
 					<array>
-						<real>-3.3359375</real>
-						<real>1.68359375</real>
+						<real>-0.75889825820922852</real>
+						<real>2.9807507991790771</real>
 					</array>
 				</dict>
 				<dict>
@@ -606,7 +606,7 @@
 								<key>customClass</key>
 								<string></string>
 								<key>displayName</key>
-								<string>CCNode</string>
+								<string>LevelNode</string>
 								<key>memberVarAssignmentName</key>
 								<string>_levelNode</string>
 								<key>memberVarAssignmentType</key>
@@ -949,8 +949,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 							<dict>
 								<key>UUID</key>
@@ -1263,8 +1261,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>252</real>
-											<real>297</real>
+											<real>254.52122497558594</real>
+											<real>297.84042358398438</real>
 											<integer>0</integer>
 											<integer>0</integer>
 											<integer>0</integer>
@@ -1301,8 +1299,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>1</real>
-											<real>1</real>
+											<real>0.50951254367828369</real>
+											<real>-0.061028473079204559</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -1452,11 +1450,197 @@
 									</dict>
 								</array>
 							</dict>
+							<dict>
+								<key>UUID</key>
+								<integer>19</integer>
+								<key>baseClass</key>
+								<string>CCBFile</string>
+								<key>children</key>
+								<array/>
+								<key>customClass</key>
+								<string></string>
+								<key>displayName</key>
+								<string>WaitingPenguin1</string>
+								<key>memberVarAssignmentName</key>
+								<string>_wp1</string>
+								<key>memberVarAssignmentType</key>
+								<integer>1</integer>
+								<key>properties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>name</string>
+										<key>type</key>
+										<string>StringSimple</string>
+										<key>value</key>
+										<string></string>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>position</string>
+										<key>type</key>
+										<string>Position</string>
+										<key>value</key>
+										<array>
+											<real>47.188930511474609</real>
+											<real>58.310409545898438</real>
+											<integer>0</integer>
+											<integer>0</integer>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>scale</string>
+										<key>type</key>
+										<string>ScaleLock</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
+											<false/>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>ccbFile</string>
+										<key>type</key>
+										<string>CCBFile</string>
+										<key>value</key>
+										<string>WaitingPenguin.ccb</string>
+									</dict>
+								</array>
+							</dict>
+							<dict>
+								<key>UUID</key>
+								<integer>20</integer>
+								<key>baseClass</key>
+								<string>CCBFile</string>
+								<key>children</key>
+								<array/>
+								<key>customClass</key>
+								<string></string>
+								<key>displayName</key>
+								<string>WaitingPenguin2</string>
+								<key>memberVarAssignmentName</key>
+								<string>_wp2</string>
+								<key>memberVarAssignmentType</key>
+								<integer>1</integer>
+								<key>properties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>name</string>
+										<key>type</key>
+										<string>StringSimple</string>
+										<key>value</key>
+										<string></string>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>position</string>
+										<key>type</key>
+										<string>Position</string>
+										<key>value</key>
+										<array>
+											<real>89.209426879882812</real>
+											<real>60.831638336181641</real>
+											<integer>0</integer>
+											<integer>0</integer>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>scale</string>
+										<key>type</key>
+										<string>ScaleLock</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
+											<false/>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>ccbFile</string>
+										<key>type</key>
+										<string>CCBFile</string>
+										<key>value</key>
+										<string>WaitingPenguin.ccb</string>
+									</dict>
+								</array>
+							</dict>
+							<dict>
+								<key>UUID</key>
+								<integer>21</integer>
+								<key>baseClass</key>
+								<string>CCBFile</string>
+								<key>children</key>
+								<array/>
+								<key>customClass</key>
+								<string></string>
+								<key>displayName</key>
+								<string>WaitingPenguin3</string>
+								<key>memberVarAssignmentName</key>
+								<string>_wp3</string>
+								<key>memberVarAssignmentType</key>
+								<integer>1</integer>
+								<key>properties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>name</string>
+										<key>type</key>
+										<string>StringSimple</string>
+										<key>value</key>
+										<string></string>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>position</string>
+										<key>type</key>
+										<string>Position</string>
+										<key>value</key>
+										<array>
+											<real>127.02786254882812</real>
+											<real>58.310405731201172</real>
+											<integer>0</integer>
+											<integer>0</integer>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>scale</string>
+										<key>type</key>
+										<string>ScaleLock</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
+											<false/>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>ccbFile</string>
+										<key>type</key>
+										<string>CCBFile</string>
+										<key>value</key>
+										<string>WaitingPenguin.ccb</string>
+									</dict>
+								</array>
+							</dict>
 						</array>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>CCPhysicsNode</string>
+						<string>MainPhysicsNode</string>
 						<key>memberVarAssignmentName</key>
 						<string>_physicsNode</string>
 						<key>memberVarAssignmentType</key>
@@ -1834,7 +2018,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCNode</string>
+				<string>MainContentNode</string>
 				<key>memberVarAssignmentName</key>
 				<string>_contentNode</string>
 				<key>memberVarAssignmentType</key>
@@ -2337,6 +2521,42 @@
 	<array>
 		<dict>
 			<key>autoPlay</key>
+			<false/>
+			<key>callbackChannel</key>
+			<dict>
+				<key>keyframes</key>
+				<array/>
+				<key>type</key>
+				<integer>12</integer>
+			</dict>
+			<key>chainedSequenceId</key>
+			<integer>-1</integer>
+			<key>length</key>
+			<real>4</real>
+			<key>name</key>
+			<string>WaitingPenguin</string>
+			<key>offset</key>
+			<real>0.0</real>
+			<key>position</key>
+			<real>0.0</real>
+			<key>resolution</key>
+			<real>30</real>
+			<key>scale</key>
+			<real>128</real>
+			<key>sequenceId</key>
+			<integer>0</integer>
+			<key>soundChannel</key>
+			<dict>
+				<key>isExpanded</key>
+				<false/>
+				<key>keyframes</key>
+				<array/>
+				<key>type</key>
+				<integer>11</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>autoPlay</key>
 			<true/>
 			<key>callbackChannel</key>
 			<dict>
@@ -2350,7 +2570,7 @@
 			<key>length</key>
 			<real>10</real>
 			<key>name</key>
-			<string>Default Timeline</string>
+			<string>Untitled Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
@@ -2360,7 +2580,7 @@
 			<key>scale</key>
 			<real>128</real>
 			<key>sequenceId</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>soundChannel</key>
 			<dict>
 				<key>isExpanded</key>
