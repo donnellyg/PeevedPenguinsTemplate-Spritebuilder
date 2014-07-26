@@ -25,7 +25,7 @@ static const float MIN_SPEED = 5.f;
     CCPhysicsJoint *_penguinCatapultJoint;
     
     //What try is the player on currently?
-    int * _currentTurn;
+    int _currentTurn;
     
     // Following action, controls screen panning
     CCAction *_followPenguin;
@@ -55,7 +55,7 @@ static const float MIN_SPEED = 5.f;
     _physicsNode.collisionDelegate = self;
     
     // Set current turn to 0
-    *_currentTurn = 0;
+    _currentTurn = 0;
     
 }
 
@@ -101,7 +101,7 @@ static const float MIN_SPEED = 5.f;
     //[self launchPenguin]; //OLD IMPLEMENTATION
     CGPoint touchLocation = [touch locationInNode:_contentNode];
     //[_physicsNode addChild:_mouseJoint];
-    if ((CGRectContainsPoint([_catapultArm boundingBox], touchLocation)) && (*_currentTurn < 3)) {
+    if ((CGRectContainsPoint([_catapultArm boundingBox], touchLocation)) && (_currentTurn < 3)) {
         _mouseJointNode.position = touchLocation;
         _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_catapultArm.physicsBody anchorA:ccp(0,0) anchorB:ccp(20,125) restLength:0.f stiffness:3000.f damping:150.f];
         
@@ -116,7 +116,7 @@ static const float MIN_SPEED = 5.f;
         
         // Remove one of the penguins sitting on the side:
         _currentTurn ++;
-        switch (*_currentTurn) {
+        switch (_currentTurn) {
             case 1:
                 [_wp1 removeFromParent];
                 break;
