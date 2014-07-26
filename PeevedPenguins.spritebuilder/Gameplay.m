@@ -54,6 +54,9 @@ static const float MIN_SPEED = 5.f;
     // Set collision delegate to self (Gameplay now implements CCPhysicsCollisionDelegate)
     _physicsNode.collisionDelegate = self;
     
+    // Set current turn to 0
+    _currentTurn = 0;
+    
 }
 
 - (void) update:(CCTime)delta {
