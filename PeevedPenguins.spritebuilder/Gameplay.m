@@ -49,7 +49,7 @@ static const float MIN_SPEED = 5.f;
     _mouseJointNode.physicsBody.collisionMask = @[];
     
     // Show invisible physics objects:
-    _physicsNode.debugDraw = TRUE;
+    _physicsNode.debugDraw = FALSE;
     
     // Set collision delegate to self (Gameplay now implements CCPhysicsCollisionDelegate)
     _physicsNode.collisionDelegate = self;
