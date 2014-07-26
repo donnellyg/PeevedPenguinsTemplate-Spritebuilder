@@ -24,6 +24,9 @@ static const float MIN_SPEED = 5.f;
     Penguin *_currentPenguin;
     CCPhysicsJoint *_penguinCatapultJoint;
     
+    //What try is the player on currently?
+    int * _currentTurn;
+    
     // Following action, controls screen panning
     CCAction *_followPenguin;
     
@@ -95,7 +98,7 @@ static const float MIN_SPEED = 5.f;
     //[self launchPenguin]; //OLD IMPLEMENTATION
     CGPoint touchLocation = [touch locationInNode:_contentNode];
     //[_physicsNode addChild:_mouseJoint];
-    if (CGRectContainsPoint([_catapultArm boundingBox], touchLocation)) {
+    if (CGRectContainsPoint([_catapultArm boundingBox], touchLocation) && *_currentTurn < 3) {
         _mouseJointNode.position = touchLocation;
         _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_catapultArm.physicsBody anchorA:ccp(0,0) anchorB:ccp(20,125) restLength:0.f stiffness:3000.f damping:150.f];
         
@@ -107,6 +110,20 @@ static const float MIN_SPEED = 5.f;
         _currentPenguin.physicsBody.allowsRotation = FALSE;
         
         _penguinCatapultJoint = [CCPhysicsJoint connectedPivotJointWithBodyA:_currentPenguin.physicsBody bodyB:_catapultArm.physicsBody anchorA:_currentPenguin.anchorPointInPoints];
+        
+        // Remove one of the penguins sitting on the side:
+        _currentTurn ++;
+        switch (*_currentTurn) {
+            case 1:
+                [_wp1 removeFromParent];
+                break;
+            case 2:
+                [_wp2 removeFromParent];
+                break;
+            case 3:
+                [_wp3 removeFromParent];
+                break;
+        }
         
     }
 }
