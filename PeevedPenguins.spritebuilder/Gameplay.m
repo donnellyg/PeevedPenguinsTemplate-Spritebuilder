@@ -98,7 +98,7 @@ static const float MIN_SPEED = 5.f;
     //[self launchPenguin]; //OLD IMPLEMENTATION
     CGPoint touchLocation = [touch locationInNode:_contentNode];
     //[_physicsNode addChild:_mouseJoint];
-    if (CGRectContainsPoint([_catapultArm boundingBox], touchLocation) && *_currentTurn < 3) {
+    if ((CGRectContainsPoint([_catapultArm boundingBox], touchLocation)) && (*_currentTurn < 3)) {
         _mouseJointNode.position = touchLocation;
         _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_catapultArm.physicsBody anchorA:ccp(0,0) anchorB:ccp(20,125) restLength:0.f stiffness:3000.f damping:150.f];
         
