@@ -27,6 +27,9 @@ static const float MIN_SPEED = 5.f;
     //What try is the player on currently?
     int _currentTurn;
     
+    // Time the bird has been idle
+    int _timeIdle;
+    
     // Following action, controls screen panning
     CCAction *_followPenguin;
     
@@ -57,6 +60,8 @@ static const float MIN_SPEED = 5.f;
     // Set current turn to 0
     _currentTurn = 0;
     
+    _timeIdle = 0;
+    
 }
 
 - (void) update:(CCTime)delta {
@@ -65,9 +70,13 @@ static const float MIN_SPEED = 5.f;
     
     // if penguin slows to a critical point, allow next attempt
     if (ccpLength(_currentPenguin.physicsBody.velocity) < MIN_SPEED) { // ccpLength method takes the length of the velocity vector --> speed
-        [self nextAttempt];
-        return;
-    }
+        _timeIdle += delta;
+        if (_timeIdle > 2) {
+            [self nextAttempt];
+            return;
+        }
+        
+    } else _timeIdle = 0;
     
     int xMin = _currentPenguin.boundingBox.origin.x;
     
