@@ -11,7 +11,7 @@
 @implementation WaitingPenguin
 
 - (void) didLoadFromCCB {
-    float delay = (arc4random() % 2000) / 1000.f;
+    float delay = 1.0f; //(arc4random() % 2000) / 1000.f;
     
     [self performSelector:@selector(startBlinkAndJump) withObject:nil afterDelay:delay];
 }
