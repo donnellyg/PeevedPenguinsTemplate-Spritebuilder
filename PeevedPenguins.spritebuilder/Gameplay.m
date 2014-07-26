@@ -70,7 +70,7 @@ static const float MIN_SPEED = 5.f;
     
     // if penguin slows to a critical point, allow next attempt
     if (ccpLength(_currentPenguin.physicsBody.velocity) < MIN_SPEED) { // ccpLength method takes the length of the velocity vector --> speed
-        _timeIdle += delta;
+        _timeIdle += (float)delta;
         if (_timeIdle > 2) {
             [self nextAttempt];
             return;
