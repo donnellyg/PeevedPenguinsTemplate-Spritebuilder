@@ -7,7 +7,11 @@
 //
 
 #import "Gameplay.h"
+#import "Penguin.h"
 #import "CCPhysics+ObjectiveChipmunk.h"
+
+// Minimum Speed at which Next Try Granted
+static const float MIN_SPEED = 5.f;
 
 @implementation Gameplay {
     CCPhysicsNode *_physicsNode;
@@ -17,14 +21,16 @@
     CCNode *_pullbackNode;
     CCNode *_mouseJointNode;
     CCPhysicsJoint *_mouseJoint;
-    CCNode *_currentPenguin;
+    Penguin *_currentPenguin;
     CCPhysicsJoint *_penguinCatapultJoint;
+    
+    // Following action, controls screen panning
+    CCAction *_followPenguin;
     
     //Waiting Penguins
     CCNode * _wp1;
     CCNode * _wp2;
     CCNode * _wp3;
-    
     
     //NSString *levelNumber;
 }
@@ -40,10 +46,48 @@
     _mouseJointNode.physicsBody.collisionMask = @[];
     
     // Show invisible physics objects:
-    _physicsNode.debugDraw = FALSE;
+    _physicsNode.debugDraw = TRUE;
     
     // Set collision delegate to self (Gameplay now implements CCPhysicsCollisionDelegate)
     _physicsNode.collisionDelegate = self;
+    
+}
+
+- (void) update:(CCTime)delta {
+    
+    if (!_currentPenguin.launched) return; // If the penguin hasn't been launched yet, don't go to nextAttempt.
+    
+    // if penguin slows to a critical point, allow next attempt
+    if (ccpLength(_currentPenguin.physicsBody.velocity) < MIN_SPEED) { // ccpLength method takes the length of the velocity vector --> speed
+        [self nextAttempt];
+        return;
+    }
+    
+    int xMin = _currentPenguin.boundingBox.origin.x;
+    
+    // If penguin leaves the left edge of the screen, allow next attempt
+    if (xMin < self.boundingBox.origin.x) {
+        [self nextAttempt];
+        return;
+    }
+    
+    int xMax = xMin + _currentPenguin.boundingBox.size.width;
+    
+    // If penguin leaves the right edge of the screen, allown next attempt
+    
+    if (xMax > (self.boundingBox.origin.x + self.boundingBox.size.width)) {
+        [self nextAttempt];
+        return;
+    }
+}
+
+- (void) nextAttempt {
+    _currentPenguin = nil;
+    // Stop following the penguin
+    [_contentNode stopAction:_followPenguin];
+    // Now, move directly to the start of the screen (position 0,0)
+    CCActionMoveTo *actionMoveTo = [CCActionMoveTo actionWithDuration:1.f position:ccp(0,0)];
+    [_contentNode runAction:actionMoveTo];
     
 }
 
@@ -56,7 +100,7 @@
         _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_catapultArm.physicsBody anchorA:ccp(0,0) anchorB:ccp(20,125) restLength:0.f stiffness:3000.f damping:150.f];
         
         //Create a penguin and place it in the catapult
-        _currentPenguin = [CCBReader load:@"Penguin"];
+        _currentPenguin = (Penguin *)[CCBReader load:@"Penguin"]; //Cast to Penguin type necessary; not just a CCNode anymore.
         CGPoint penguinPosition = [_catapultArm convertToWorldSpace:ccp(20,125)];
         _currentPenguin.position = [_physicsNode convertToNodeSpace:penguinPosition];
         [_physicsNode addChild:_currentPenguin];
@@ -92,9 +136,10 @@
         
         // Follow the now flying penguin
         //[self launchPenguin];
-        CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentPenguin worldBoundary:self.boundingBox];
-        [_contentNode runAction:follow];
+        _followPenguin = [CCActionFollow actionWithTarget:_currentPenguin worldBoundary:self.boundingBox];
+        [_contentNode runAction:_followPenguin];
         
+        _currentPenguin.launched = TRUE;
     }
 }
 

@@ -18,6 +18,8 @@
 - (void) releaseCatapult;
 - (void) ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair seal:(CCNode *)nodeA wildcard:(CCNode *)nodeB;
 - (void) removeSeal:(CCNode *)seal;
+- (void) update:(CCTime)delta;
+- (void) nextAttempt;
 
 - (void) launchPenguin;
 
