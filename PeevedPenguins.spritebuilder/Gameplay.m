@@ -72,6 +72,12 @@ static const float MIN_SPEED = 5.f;
     if (ccpLength(_currentPenguin.physicsBody.velocity) < MIN_SPEED) { // ccpLength method takes the length of the velocity vector --> speed
         _timeIdle += (float)delta;
         if (_timeIdle > 2.f) {
+            CCParticleSystem *penguinExplosion = (CCParticleSystem *) [CCBReader load:@"PenguinExplosion"];
+            penguinExplosion.autoRemoveOnFinish = TRUE;
+            penguinExplosion.position = _currentPenguin.position;
+            CCNode *scene = [_currentPenguin parent];
+            [scene addChild:penguinExplosion];
+            [_currentPenguin removeFromParent];
             [self nextAttempt];
             return;
         }
